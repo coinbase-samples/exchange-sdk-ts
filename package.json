@@ -1,0 +1,29 @@
+{
+  "name": "@coinbase-sample/exchange-sdk-ts",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "types": "dist/types/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "lint": "eslint . --ext .js,.ts",
+    "format": "prettier --write \"**/*.{js,ts,tsx,json,css,md}\"",
+    "gen-types": "openapi-generator-cli generate -i apiSpec/exchange-spec.json -g typescript-node --global-property models -o apiSpec/types --additional-properties=supportsES6=true --additional-properties=snapshot=true --skip-validate-spec && cd apiSpec && node generateTypes.js",
+    "replace-model": "rm -r src/model && cp -r apiSpec/types/processed src/model",
+    "update-spec": "npm run gen-types && npm run replace-model"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@typescript-eslint/eslint-plugin": "^8.29.1",
+    "@typescript-eslint/parser": "^8.29.1",
+    "dotenv": "^16.4.5",
+    "eslint": "^9.24.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-prettier": "^5.2.6",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@coinbase-sample/core-ts": "^0.1.4"
+  }
+}
