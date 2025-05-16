@@ -18,11 +18,11 @@
  *  Do not edit the class manually.
  */
 
-import { AddressBookNewAddress } from './AddressBookNewAddress';
+import { NewAddress } from './NewAddress';
 
 export type PublicPostAddressBookRequest = {
   /**
    * List of addresses to add to the address book
    */
-  addresses?: Array<AddressBookNewAddress>;
+  addresses?: Array<NewAddress>;
 };

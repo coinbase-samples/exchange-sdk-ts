@@ -2,7 +2,7 @@ export type { Account } from './Account';
 export type { AccountHold } from './AccountHold';
 export type { AccountLedgerEntry } from './AccountLedgerEntry';
 export type { AccountReport } from './AccountReport';
-export type { AddressBookNewAddress } from './AddressBookNewAddress';
+export type { NewAddress } from './NewAddress';
 export type { AddressBookWhitelistedAddress } from './AddressBookWhitelistedAddress';
 export type { AddressBookWhitelistedAddressInfo } from './AddressBookWhitelistedAddressInfo';
 export type { AddressData } from './AddressData';

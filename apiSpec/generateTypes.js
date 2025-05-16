@@ -56,6 +56,7 @@ const replacements = {
   AccountLedgerEntryAccountLedgerType: 'EntryAccountLedgerType',
   ReportCreateResultReportStatus: 'ReportsStatus',
   'AddressBookNewAddress.': '', // Edge case for the AddressBookNewAddress namespace
+  AddressBookNewAddress: 'NewAddress',
 };
 
 const classnameAsExceptions = ['CustodyActivityType', 'PrimeActivityType'];
