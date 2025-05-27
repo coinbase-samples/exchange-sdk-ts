@@ -16,15 +16,14 @@
 
 import { CoinbaseClient } from '@coinbase-sample/core-ts';
 
-import { API_BASE_PATH, USER_AGENT, API_SANDBOX_BASE_PATH } from './constants';
+import { API_BASE_PATH, USER_AGENT } from './constants';
 import { CoinbaseExchangeCredentials } from './credentials';
 import { toCamelCase } from './shared/toCamelCase';
 import { toSnakeCase } from './shared/toSnakeCase';
 
 export class CoinbaseExchangeClient extends CoinbaseClient {
   constructor(credentials?: CoinbaseExchangeCredentials, apiBasePath?: string) {
-    // TODO: swap to API_BASE_PATH when ready
-    super(apiBasePath ?? API_SANDBOX_BASE_PATH, credentials, USER_AGENT);
+    super(apiBasePath ?? API_BASE_PATH, credentials, USER_AGENT);
 
     // transform the response data to camelCase
     this.addTransformResponse((response) => {
