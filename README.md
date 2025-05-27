@@ -1,8 +1,8 @@
-# Coinbase Prime API TypeScript SDK
+# Coinbase Exchange API TypeScript SDK
 
 ## Overview
 
-Welcome to the Coinbase Prime API TypeScript SDK. This TypeScript project was created to allow developers to easily plug into the [Coinbase Prime API](https://docs.cdp.coinbase.com/prime/docs/welcome).
+Welcome to the Coinbase Exchange API TypeScript SDK. This TypeScript project was created to allow developers to easily plug into the [Coinbase Exchange API](https://docs.cdp.coinbase.com/exchange/docs/welcome).
 
 ---
 
@@ -14,7 +14,7 @@ npm install @coinbase-sample/exchange-sdk-ts
 
 ## License
 
-The _Prime Typescript SDK_ sample library is free and open source and released under the [Apache License, Version 2.0](LICENSE).
+The _Exchange Typescript SDK_ sample library is free and open source and released under the [Apache License, Version 2.0](LICENSE).
 
 The application and code are only available for demonstration purposes.
 
@@ -22,11 +22,40 @@ The application and code are only available for demonstration purposes.
 
 Here are a few examples requests:
 
-**[List Portfolios](https://docs.cdp.coinbase.com/prime/reference/primerestapi_getportfolios)**
+**Configure Credentials**
 
 ```
-client
-    .listPortfolios()
+const creds = JSON.parse(process.env.EXCHANGE_CREDENTIALS);
+
+const credentials = new CoinbaseExchangeCredentials(
+  creds.AccessKey,
+  creds.SecretKey,
+  creds.Passphrase
+);
+
+const client = new CoinbaseExchangeClient(credentials);
+```
+
+**[List Orders]https://docs.cdp.coinbase.com/exchange/reference/exchangerestapi_getorders)**
+
+```
+const service = new OrdersService(client);
+
+service
+  .listOrders()
+  .then((orders) => {
+    console.log(orders);
+  })
+  .catch(console.error);
+```
+
+**[Get Trading Pairs](https://docs.cdp.coinbase.com/exchange/reference/exchangerestapi_getproducts)**
+
+```
+const service = new ProductsService(client);
+
+service
+    .listTradingPairs({entityId: "somePortfolioId"})
     .then((result) => {
         console.log(result);
     })
@@ -35,20 +64,7 @@ client
     });
 ```
 
-**[Get Assets](https://docs.cdp.coinbase.com/prime/reference/primerestapi_getentityassets)**
-
-```
-client
-    .listAssets({entityId: "somePortfolioId"})
-    .then((result) => {
-        console.log(result);
-    })
-    .catch((error) => {
-        console.error(error.message);
-    });
-```
-
-**[Create Order](https://docs.cdp.coinbase.com/prime/reference/primerestapi_createorder)**
+**[Create Order](https://docs.cdp.coinbase.com/exchange/reference/exchangerestapi_postorders)**
 
 _$10 Market Buy on BTC-USD_
 
